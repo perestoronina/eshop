@@ -12,4 +12,5 @@
 </table>
 
 <%= button_to 'Empty cart', @cart, :method => :delete,
-    :confirm => 'Are you sure?' %>
+    :confirm => 'Are you sure?', 
+	:remote => true %>
