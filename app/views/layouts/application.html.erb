@@ -16,7 +16,6 @@
   </div>
   <div id="columns">
     <div id="side">
-      <!-- START_HIGHLIGHT -->
       <!-- START:hidden_div -->
       <% if @cart %>
         <%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
@@ -24,12 +23,22 @@
         <% end %>
       <% end %>
     <!-- END:hidden_div -->
-      <!-- END_HIGHLIGHT -->
 
       <a href="http://www....">Home</a><br />
       <a href="http://www..../faq">Questions</a><br />
       <a href="http://www..../news">News</a><br />
       <a href="http://www..../contact">Contact</a><br />
+<!-- START_HIGHLIGHT -->
+
+      <% if session[:user_id] %>
+        <br />
+        <%= link_to 'Orders',   orders_path   %><br />
+        <%= link_to 'Products', products_path %><br />
+        <%= link_to 'Users',    users_path    %><br />
+        <br />
+        <%= button_to 'Logout', logout_path, :method => :delete   %>
+      <% end %>
+<!-- END_HIGHLIGHT -->
     </div>
     <div id="main">
       <%= yield %>
