@@ -1,45 +1,49 @@
+<!-- START:explanation -->
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %>
-      prohibited this order from being saved:</h2>
+<!-- START_HIGHLIGHT -->
+      <h2><%= t('errors.template.header', :count=>@order.errors.size,
+        :model=>t('activerecord.models.order')) %>.</h2>
+      <p><%= t('errors.template.body') %></p>
+<!-- END_HIGHLIGHT -->
 
       <ul>
       <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<!-- START:raw -->
+        <li><%= raw msg %></li>
+<!-- END:raw -->
       <% end %>
       </ul>
     </div>
   <% end %>
+<!-- ... -->
+<!-- END:explanation -->
 
   <div class="field">
     <%= f.label :name %><br />
-<!-- START_HIGHLIGHT -->
     <%= f.text_field :name, :size => 40 %>
-<!-- END_HIGHLIGHT -->
   </div>
   <div class="field">
-    <%= f.label :address %><br />
 <!-- START_HIGHLIGHT -->
-    <%= f.text_area :address, :rows => 3, :cols => 40 %>
+    <%= f.label :address, t('.address_html') %><br />
 <!-- END_HIGHLIGHT -->
+    <%= f.text_area :address, :rows => 3, :cols => 40 %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
-<!-- START_HIGHLIGHT -->
     <%= f.email_field :email, :size => 40 %>
-<!-- END_HIGHLIGHT -->
   </div>
   <div class="field">
     <%= f.label :pay_type %><br />
-<!-- START_HIGHLIGHT -->
     <%= f.select :pay_type, Order::PAYMENT_TYPES,
-                  :prompt => 'Select a payment method' %>
+#START_HIGHLIGHT
+                  :prompt => t('.pay_prompt_html') %>
 <!-- END_HIGHLIGHT -->
   </div>
   <div class="actions">
 <!-- START_HIGHLIGHT -->
-    <%= f.submit 'Place Order' %>
+    <%= f.submit t('.submit') %>
 <!-- END_HIGHLIGHT -->
   </div>
 <% end %>

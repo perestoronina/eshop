@@ -29,6 +29,14 @@ es:
 #START:errors
   activerecord:
 #END:errors
+    models:
+      order:       "pedido"
+    attributes:
+      order:
+        address:   "Direcci&oacute;n"
+        name:      "Nombre"
+        email:     "E-mail"
+        pay_type:  "Forma de pago"
 #END:model
 #START:errors
     errors:

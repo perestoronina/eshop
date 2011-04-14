@@ -8,7 +8,6 @@
 #---
 class OrdersController < ApplicationController
     skip_before_filter :authorize, :only => [:new, :create]
-
   # GET /orders
   # GET /orders.xml
   def index
@@ -65,7 +64,7 @@ class OrdersController < ApplicationController
         session[:cart_id] = nil
         Notifier.order_received(@order).deliver
         format.html { redirect_to(store_url, :notice => 
-          'Thank you for your order.') }
+          I18n.t('.thanks')) }
         format.xml  { render :xml => @order, :status => :created,
           :location => @order }
       else
