@@ -12,7 +12,9 @@
 <body id="store">
   <div id="banner">
     <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf" %>
+<!-- START_HIGHLIGHT -->
+    <%= @page_title || t('.title') %>
+<!-- END_HIGHLIGHT -->
   </div>
   <div id="columns">
     <div id="side">
@@ -24,11 +26,18 @@
       <% end %>
     <!-- END:hidden_div -->
 
-      <a href="http://www....">Home</a><br />
-      <a href="http://www..../faq">Questions</a><br />
-      <a href="http://www..../news">News</a><br />
-      <a href="http://www..../contact">Contact</a><br />
 <!-- START_HIGHLIGHT -->
+      <a href="http://www...."><%= t('.home') %></a><br />
+<!-- END_HIGHLIGHT -->
+<!-- START_HIGHLIGHT -->
+      <a href="http://www..../faq"><%= t('.questions') %></a><br />
+<!-- END_HIGHLIGHT -->
+<!-- START_HIGHLIGHT -->
+      <a href="http://www..../news"><%= t('.news') %></a><br />
+<!-- END_HIGHLIGHT -->
+<!-- START_HIGHLIGHT -->
+      <a href="http://www..../contact"><%= t('.contact') %></a><br />
+<!-- END_HIGHLIGHT -->
 
       <% if session[:user_id] %>
         <br />
@@ -38,7 +47,6 @@
         <br />
         <%= button_to 'Logout', logout_path, :method => :delete   %>
       <% end %>
-<!-- END_HIGHLIGHT -->
     </div>
     <div id="main">
       <%= yield %>

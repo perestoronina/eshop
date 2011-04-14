@@ -1,4 +1,6 @@
-<div class="cart_title">Your Cart</div>
+<!-- START_HIGHLIGHT -->
+<div class="cart_title"><%= t('.title') %></div>
+<!-- END_HIGHLIGHT -->
 <table>
   <%= render(cart.line_items) %>
 
@@ -8,6 +10,10 @@
   </tr>
 
 </table>
-<%= button_to "Checkout", new_order_path, :method => :get %>
-<%= button_to 'Empty cart', cart, :method => :delete,
+<!-- START_HIGHLIGHT -->
+<%= button_to t('.checkout'), new_order_path, :method => :get %>
+<!-- END_HIGHLIGHT -->
+<!-- START_HIGHLIGHT -->
+<%= button_to t('.empty'), cart, :method => :delete,
+# END_HIGHLIGHT
     :confirm => 'Are you sure?' %>

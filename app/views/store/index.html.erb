@@ -2,18 +2,21 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Your Pragmatic Catalog</h1>
+<!-- START_HIGHLIGHT -->
+<h1><%= t('.title_html') %></h1>
+<!-- END_HIGHLIGHT -->
 
 <% @products.each do |product| %>
   <div class="entry">
-    <%= link_to image_tag(product.image_url, {:border => "0", :title => "Push it into cart!"}),
-	                      line_items_path(:product_id => product), {:method => :post} %>
+    <%= image_tag(product.image_url) %>
     <h3><%= product.title %></h3>
     <%= sanitize(product.description) %>
     <div class="price_line">
-      <span class="price"><%= number_to_currency product.price %></span>
-      <%= button_to 'Add to cart', line_items_path(:product_id => product), 
-		:remote => true %>
+      <span class="price"><%= number_to_currency(product.price) %></span>
+<!-- START_HIGHLIGHT -->
+      <%= button_to t('.add_html'), line_items_path(:product_id => product),
+# END_HIGHLIGHT
+        :remote => true %>
     </div>
   </div>
 <% end %>
