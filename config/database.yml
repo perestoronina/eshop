@@ -25,5 +25,6 @@ production:
   username: username
   password: password
   host: localhost
+  socket: /tmp/mysql.sock
 #END:production
 
