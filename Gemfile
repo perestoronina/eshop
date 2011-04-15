@@ -6,12 +6,19 @@ gem 'rails', '3.0.5'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+#START:mysql
+group :production do
+  gem 'mysql'
+end
+#END:mysql
 
 # Use unicorn as the web server
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+#START_HIGHLIGHT
+gem 'capistrano'
+#END_HIGHLIGHT
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
@@ -22,10 +29,8 @@ gem 'sqlite3'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
-#START_HIGHLIGHT
 
 gem 'will_paginate', '>= 3.0.pre'
-#END_HIGHLIGHT
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
