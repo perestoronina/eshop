@@ -1,9 +1,9 @@
 #---
 # Excerpted from "Agile Web Development with Rails, 4rd Ed.",
 # published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material, 
+# Copyrights apply to this code. It may not be used to create training material,
 # courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose. 
+# We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 class ApplicationController < ActionController::Base
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def current_cart 
+    def current_cart
       Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound
       cart = Cart.create
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   protected
     def authorize
-      if request.format == Mime::HTML 
+      if request.format == Mime::HTML
         unless User.find_by_id(session[:user_id])
           redirect_to login_url, :notice => "Please log in"
         end
@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
         if I18n.available_locales.include?(params[:locale].to_sym)
           I18n.locale = params[:locale]
         else
-          flash.now[:notice] = 
+          flash.now[:notice] =
             "#{params[:locale]} translation not available"
           logger.error flash.now[:notice]
         end
