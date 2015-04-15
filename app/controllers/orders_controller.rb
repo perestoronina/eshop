@@ -1,9 +1,9 @@
 #---
 # Excerpted from "Agile Web Development with Rails, 4rd Ed.",
 # published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material, 
+# Copyrights apply to this code. It may not be used to create training material,
 # courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose. 
+# We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 class OrdersController < ApplicationController
@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         Notifier.order_received(@order).deliver
-        format.html { redirect_to(store_url, :notice => 
+        format.html { redirect_to(store_url, :notice =>
           I18n.t('.thanks')) }
         format.xml  { render :xml => @order, :status => :created,
           :location => @order }

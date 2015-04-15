@@ -15,7 +15,7 @@
     <!-- START_HIGHLIGHT -->
     <%= form_tag store_path, :class => 'locale' do %>
     <!-- END_HIGHLIGHT -->
-      <%= select_tag 'set_locale', 
+      <%= select_tag 'set_locale',
         options_for_select(LANGUAGES, I18n.locale.to_s),
         :onchange => 'this.form.submit()' %>
       <%= submit_tag 'submit' %>
